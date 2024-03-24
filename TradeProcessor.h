@@ -3,22 +3,21 @@
 #include <sstream>
 #include <vector>
 
-struct TradeRecord
+struct TR
 {
-    std::string SourceCurrency;
-    std::string DestinationCurrency;
+    std::string SC;//SourceCurrency
+    std::string DC;//DestibationCurrency
     float Lots;
     double Price;
 };
 
-class TradeProcessor
+class Processor
 {
 public:
-    void ProcessTrades(std::istream& stream);
+    void Process(std::istream& stream);
     
 private:
     static const float LotSize;
-
     std::vector<std::string> SplitString(const std::string& str, char delimiter)
     {
         std::vector<std::string> tokens;
@@ -31,7 +30,7 @@ private:
         return tokens;
     }
 
-    bool TryParseInt(const std::string& str, int& value)
+    bool intGetFromString(const std::string& str, int& value)
     {
         try
         {
@@ -44,7 +43,7 @@ private:
         }
     }
 
-    bool TryParseDouble(const std::string& str, double& value)
+    bool toDouble(const std::string& str, double& value)
     {
         try
         {
@@ -57,7 +56,6 @@ private:
         }
     }
 };
-
 const float TradeProcessor::LotSize = 100000;
 
 // int main()
