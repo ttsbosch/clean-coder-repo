@@ -56,7 +56,7 @@ private:
         }
     }
 };
-const float TradeProcessor::LotSize = 100000;
+const float Processor::LotSize = 100000;
 
 // int main()
 // {
